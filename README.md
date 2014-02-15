@@ -1,4 +1,4 @@
-Mvc.Test
-========
+Mvc
+===
+Currently a dumping ground for ideas and code snippets for building MVC applications
 
-Test helpers for ASP.Net MVC applications
