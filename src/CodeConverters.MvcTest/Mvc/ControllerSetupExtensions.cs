@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Linq;
-using System.Reflection;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using NSubstitute;
-using Xunit;
 
 namespace CodeConverters.MvcTest.Mvc
 {
@@ -28,13 +25,6 @@ namespace CodeConverters.MvcTest.Mvc
             var requestContext = new RequestContext(controller.ControllerContext.HttpContext, controller.ControllerContext.RouteData);
             controller.Url = new UrlHelper(requestContext);
             return controller;
-        }
-
-        public static TAttribute Has<TAttribute>(this Controller controller) where TAttribute : Attribute
-        {
-            var attribute = controller.GetType().GetCustomAttributes<TAttribute>().Single();
-            Assert.NotNull(attribute);
-            return attribute;
         }
 
         private static void EnsureControllerTestContext<T>(this T controller) where T : Controller
