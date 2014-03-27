@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace CodeConverters.MvcTests.Diagnostics
+namespace CodeConverters.MvcTests.Diagnostics.Helpers
 {
     public static class LogEntryExtensions
     {

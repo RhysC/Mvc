@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Web.Mvc;
 using CodeConverters.Mvc.Diagnostics;
+using CodeConverters.MvcTests.Diagnostics.Helpers;
 using NSubstitute;
 using Xunit;
 
