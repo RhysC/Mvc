@@ -19,8 +19,6 @@ namespace CodeConverters.MvcTests.Diagnostics
 
         public MvcLogEventFixtures()
         {
-            _context = Substitute.For<ActionExecutedContext>();
-
             _expectedUrl = "http://mytesturl.com/mycontroller/myaction/123";
             _expectedControllerName = "mycontroller";
             _expectedActionName = "myaction";
@@ -30,6 +28,7 @@ namespace CodeConverters.MvcTests.Diagnostics
             var routeData = new RouteData();
             routeData.Values.Add("id", "123");
 
+            _context = Substitute.For<ActionExecutedContext>();
             _context.RequestContext.HttpContext.Request.RawUrl.Returns(_expectedUrl);
             _context.ActionDescriptor.ControllerDescriptor.ControllerName.Returns(_expectedControllerName);
             _context.ActionDescriptor.ActionName.Returns(_expectedActionName);

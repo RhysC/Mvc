@@ -83,6 +83,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Diagnostics\ActionExecutedContextSetup.cs" />
+    <Compile Include="Diagnostics\DummyController.cs" />
+    <Compile Include="Diagnostics\LogAttributeFixture.cs" />
+    <Compile Include="Diagnostics\LogAttributeOnActionExecutedHttpPostFixture.cs" />
+    <Compile Include="Diagnostics\LogAttributeOnExceptionFixture.cs" />
     <Compile Include="Diagnostics\LogEntryExtensions.cs" />
     <Compile Include="Diagnostics\MvcErrorLogEventFixtures.cs" />
     <Compile Include="Diagnostics\MvcLogEventFixtures.cs" />
