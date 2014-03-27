@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using NSubstitute;
 
-namespace CodeConverters.MvcTests.Diagnostics
+namespace CodeConverters.MvcTests.Diagnostics.Helpers
 {
     public class ActionExecutedContextSetup
     {

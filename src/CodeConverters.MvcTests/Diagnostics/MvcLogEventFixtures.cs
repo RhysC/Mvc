@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 using CodeConverters.Mvc.Diagnostics;
+using CodeConverters.MvcTests.Diagnostics.Helpers;
 using Xunit;
 using NSubstitute;
 
