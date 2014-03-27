@@ -4,14 +4,14 @@ using System.Web.Mvc;
 
 namespace CodeConverters.Mvc.Diagnostics
 {
-    internal class MvcErrorLogEvent
+    public class MvcErrorLogEvent
     {
         private readonly string _httpMethod;
         private readonly string _url;
         private readonly NameValueCollection _formData;
         private readonly NameValueCollection _headers;
 
-        public MvcErrorLogEvent(ControllerContext context)
+        public MvcErrorLogEvent(ExceptionContext context)
         {
             _httpMethod = context.HttpContext.Request.HttpMethod;
             _headers = context.HttpContext.Request.Headers;
