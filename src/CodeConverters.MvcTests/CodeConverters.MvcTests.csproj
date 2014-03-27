@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{02D2A5ED-6C3E-4474-8539-EC834FB2C8FE}</ProjectGuid>
+    <ProjectGuid>{1FEFD33D-1ADD-4E92-BB24-3719A9C8B687}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeConverters.Mvc</RootNamespace>
-    <AssemblyName>CodeConverters.Mvc</AssemblyName>
+    <RootNamespace>CodeConverters.MvcTests</RootNamespace>
+    <AssemblyName>CodeConverters.MvcTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,11 +40,8 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="NewRelic.Api.Agent">
-      <HintPath>..\packages\NewRelic.Agent.Api.2.24.218.0\lib\NewRelic.Api.Agent.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,25 +75,26 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.2\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\ClaimCookieAutheticationHttpModule.cs" />
-    <Compile Include="Auth\CustomAuthorizeAttribute.cs" />
-    <Compile Include="Auth\CustomClaimTypes.cs" />
-    <Compile Include="Auth\FormAuthCookieManager.cs" />
-    <Compile Include="Diagnostics\FormExtensions.cs" />
-    <Compile Include="Diagnostics\Log4NetAppenderFactory.cs" />
-    <Compile Include="Diagnostics\Log4NetConfiguration.cs" />
-    <Compile Include="Diagnostics\LogAttribute.cs" />
-    <Compile Include="Diagnostics\MvcErrorLogEvent.cs" />
-    <Compile Include="Diagnostics\MvcLogEvent.cs" />
-    <Compile Include="Diagnostics\NewRelicAgentErrorAppender.cs" />
-    <Compile Include="HttpModules\ErrorLoggingHttpModule.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Diagnostics\MvcLogEventFixtures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Auth\UserPermissionsExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CodeConverters.Mvc\CodeConverters.Mvc.csproj">
+      <Project>{02d2a5ed-6c3e-4474-8539-ec834fb2c8fe}</Project>
+      <Name>CodeConverters.Mvc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
