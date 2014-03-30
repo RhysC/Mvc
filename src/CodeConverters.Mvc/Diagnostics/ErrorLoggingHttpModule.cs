@@ -2,7 +2,7 @@
 using System.Web;
 using log4net;
 
-namespace CodeConverters.Mvc.HttpModules
+namespace CodeConverters.Mvc.Diagnostics
 {
     public class ErrorLoggingHttpModule : IHttpModule
     {

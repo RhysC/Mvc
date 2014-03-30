@@ -92,11 +92,19 @@
     <Compile Include="Diagnostics\MvcErrorLogEventFixtures.cs" />
     <Compile Include="Diagnostics\MvcLogEventFixtures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebConfigFixture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Web.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeConverters.MvcTest\CodeConverters.MvcTest.csproj">
+      <Project>{2e566476-569f-47c4-9854-8e9c3f840d16}</Project>
+      <Name>CodeConverters.MvcTest</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CodeConverters.Mvc\CodeConverters.Mvc.csproj">
       <Project>{02d2a5ed-6c3e-4474-8539-ec834fb2c8fe}</Project>
       <Name>CodeConverters.Mvc</Name>
