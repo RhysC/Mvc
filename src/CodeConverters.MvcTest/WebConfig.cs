@@ -11,13 +11,18 @@ namespace CodeConverters.MvcTest
         private readonly XDocument _doc;
         private const string WebConfigFileName = "web.config";
 
-        public WebConfig()
+        /// <summary>
+        /// Test wrapper for web config
+        /// </summary>
+        /// <param name="subfolderName">the sub folder name if the web config is copied to a child folder (e.g. you are testing multiple web configs in one test project)</param>
+        public WebConfig(string subfolderName = null)
         {
-            if (!File.Exists(WebConfigFileName))
+            var filePath = string.Format("{0}{1}", subfolderName, WebConfigFileName);
+            if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException("Could not find a webc.onfig file. Please make sure the web.config is added to the test project as a linked file");
+                throw new FileNotFoundException(string.Format("Could not find a web.config file in the following path {0}. Please make sure the web.config is added to the test project as a linked file", filePath));
             }
-            var config = File.ReadAllLines(WebConfigFileName);
+            var config = File.ReadAllLines(filePath);
             _doc = XDocument.Parse(string.Join(Environment.NewLine, config));
         }
 
