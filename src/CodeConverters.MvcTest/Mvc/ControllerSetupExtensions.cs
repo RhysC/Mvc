@@ -4,7 +4,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using NSubstitute;
+using Moq;
 
 namespace CodeConverters.MvcTest.Mvc
 {
@@ -14,14 +14,14 @@ namespace CodeConverters.MvcTest.Mvc
         {
             controller.EnsureControllerTestContext();
             var principal = new ClaimsPrincipal(new GenericPrincipal(new GenericIdentity(userName), null));
-            controller.ControllerContext.HttpContext.User.Returns(principal);
+            Mock.Get(controller.ControllerContext.HttpContext).SetupGet(r => r.User).Returns(principal);
             return controller;
         }
 
         public static T SetCurrentUrl<T>(this T controller, string currentUrl = "http://localhost:123") where T : Controller
         {
             controller.EnsureControllerTestContext();
-            controller.ControllerContext.HttpContext.Request.Url.Returns(new Uri(currentUrl));
+            Mock.Get(controller.ControllerContext.HttpContext.Request).SetupGet(r => r.Url).Returns(new Uri(currentUrl));
             var requestContext = new RequestContext(controller.ControllerContext.HttpContext, controller.ControllerContext.RouteData);
             controller.Url = new UrlHelper(requestContext);
             return controller;
@@ -30,9 +30,9 @@ namespace CodeConverters.MvcTest.Mvc
         private static void EnsureControllerTestContext<T>(this T controller) where T : Controller
         {
             if (controller.ControllerContext != null) return;
-            var currentHttpContext = Substitute.For<HttpContextBase>();
-            currentHttpContext.Request.Returns(Substitute.For<HttpRequestBase>());
-            controller.ControllerContext = new ControllerContext(currentHttpContext, new RouteData(), controller);
+            var currentHttpContext = new Mock<HttpContextBase> { DefaultValue = DefaultValue.Mock };
+            currentHttpContext.SetupAllProperties();
+            controller.ControllerContext = new ControllerContext(currentHttpContext.Object, new RouteData(), controller);
         }
     }
 }
