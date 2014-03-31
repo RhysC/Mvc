@@ -5,28 +5,24 @@ using CodeConverters.MvcTests.Diagnostics.Helpers;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
-using NSubstitute;
+using Moq;
 using Xunit;
 
 namespace CodeConverters.MvcTests.Diagnostics
 {
-    public class LogAttributeOnActionExecutedHttpGetFixture : IUseFixture<ActionExecutedContextSetup>
+    public class LogAttributeOnActionExecutedHttpGetFixture 
     {
         private readonly LogAttribute _sut;
         private readonly MemoryAppender _memoryAppender;
-        private ActionExecutedContext _context;
+        private readonly ActionExecutedContext _context;
 
         public LogAttributeOnActionExecutedHttpGetFixture()
         {
             _memoryAppender = new MemoryAppender();
             BasicConfigurator.Configure(_memoryAppender);
             _sut = new LogAttribute();
-        }
-
-        public void SetFixture(ActionExecutedContextSetup data)
-        {
-            _context = data.CreateActionActionExecutedContextFake();
-            _context.HttpContext.Request.HttpMethod.Returns("GET");
+            _context = ObjectMother.CreateActionActionExecutedContextFake();
+            Mock.Get(_context.HttpContext.Request).SetupGet(r => r.HttpMethod).Returns("GET");
         }
 
         [Fact]

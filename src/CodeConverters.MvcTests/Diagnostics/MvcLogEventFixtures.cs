@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.Routing;
 using CodeConverters.Mvc.Diagnostics;
 using CodeConverters.MvcTests.Diagnostics.Helpers;
+using Moq;
 using Xunit;
-using NSubstitute;
 
 namespace CodeConverters.MvcTests.Diagnostics
 {
@@ -20,23 +18,10 @@ namespace CodeConverters.MvcTests.Diagnostics
 
         public MvcLogEventFixtures()
         {
-            _expectedUrl = "http://mytesturl.com/mycontroller/myaction/123";
-            _expectedControllerName = "mycontroller";
-            _expectedActionName = "myaction";
-
-            var expectedHeaders = new NameValueCollection { { "header1", "value1" }, { "header2", "value2" }, { "secret", "IAmBatman" } };
-            var expectedFormData = new NameValueCollection { { "Form1", "valueA" }, { "form2", "valueB" }, { "password", "123qwe" } };
-            var routeData = new RouteData();
-            routeData.Values.Add("id", "123");
-
-            _context = Substitute.For<ActionExecutedContext>();
-            _context.RequestContext.HttpContext.Request.RawUrl.Returns(_expectedUrl);
-            _context.ActionDescriptor.ControllerDescriptor.ControllerName.Returns(_expectedControllerName);
-            _context.ActionDescriptor.ActionName.Returns(_expectedActionName);
-            _context.HttpContext.Request.HttpMethod.Returns("GET");
-            _context.HttpContext.Request.Headers.Returns(expectedHeaders);
-            _context.HttpContext.Request.Form.Returns(expectedFormData);
-            _context.RouteData.Returns(routeData);
+            _context = ObjectMother.CreateActionActionExecutedContextFake();
+            _expectedUrl = _context.RequestContext.HttpContext.Request.RawUrl;
+            _expectedControllerName = _context.ActionDescriptor.ControllerDescriptor.ControllerName;
+            _expectedActionName = _context.ActionDescriptor.ActionName;
 
             _sut = new MvcLogEvent(_context);
         }
@@ -73,7 +58,7 @@ namespace CodeConverters.MvcTests.Diagnostics
         public void IsGetIsTrueOnHttpGet()
         {
             Assert.True(_sut.IsHttpGet);
-            _context.HttpContext.Request.HttpMethod.Returns("POST");
+            Mock.Get(_context.HttpContext.Request).SetupGet(r => r.HttpMethod).Returns("POST");
             Assert.False(new MvcLogEvent(_context).IsHttpGet);
         }
     }

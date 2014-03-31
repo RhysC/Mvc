@@ -1,12 +1,9 @@
-using System.Collections.Specialized;
 using System.Linq;
-using System.Web.Mvc;
 using CodeConverters.Mvc.Diagnostics;
 using CodeConverters.MvcTests.Diagnostics.Helpers;
 using log4net.Appender;
 using log4net.Config;
 using log4net.Core;
-using NSubstitute;
 using Xunit;
 
 namespace CodeConverters.MvcTests.Diagnostics
@@ -20,7 +17,7 @@ namespace CodeConverters.MvcTests.Diagnostics
             _memoryAppender = new MemoryAppender();
             BasicConfigurator.Configure(_memoryAppender);
             var sut = new LogAttribute();
-            var context = CreateExceptionContextFake();
+            var context = ObjectMother.CreateExceptionContextFake();
             sut.OnException(context);
         }
 
@@ -35,21 +32,6 @@ namespace CodeConverters.MvcTests.Diagnostics
         public void UsesTheGivenControllerAsTheLoggerName()
         {
             Assert.True(_memoryAppender.GetEvents().All(e => e.LoggerName == typeof(DummyController).FullName), "Expecting logger name to be that of the controller type");
-        }
-
-        private static ExceptionContext CreateExceptionContextFake()
-        {
-            var context = Substitute.For<ExceptionContext>();
-
-            var expectedHeaders = new NameValueCollection { { "header1", "value1" }, { "header2", "value2" }, { "secret", "IAmBatman" } };
-            var expectedFormData = new NameValueCollection { { "Form1", "valueA" }, { "form2", "valueB" }, { "password", "123qwe" } };
-
-            context.RequestContext.HttpContext.Request.RawUrl.Returns("http://mytesturl.com/mycontroller/myaction/123");
-            context.HttpContext.Request.HttpMethod.Returns("POST");
-            context.HttpContext.Request.Headers.Returns(expectedHeaders);
-            context.HttpContext.Request.Form.Returns(expectedFormData);
-            context.Controller.Returns(new DummyController());
-            return context;
         }
     }
 }
