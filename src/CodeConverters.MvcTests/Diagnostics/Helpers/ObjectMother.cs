@@ -1,5 +1,4 @@
 using System.Collections.Specialized;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Moq;
@@ -22,18 +21,6 @@ namespace CodeConverters.MvcTests.Diagnostics.Helpers
         }
         public static ActionExecutedContext CreateActionActionExecutedContextFake()
         {
-            //var actionExecutedContext = new Mock<ActionExecutedContext>();
-            //actionExecutedContext.SetupGet(a => a.HttpContext).Returns(CreateHttpContextMock().Object);
-            //actionExecutedContext.SetupGet(a => a.ActionDescriptor).Returns(CreateActionDescriptorMock().Object);
-
-            //var routeData = new RouteData();
-            //routeData.Values.Add("id", "123");
-            //actionExecutedContext.SetupGet(a => a.RouteData).Returns(routeData);
-
-            //actionExecutedContext.SetupGet(a => a.Controller).Returns(new DummyController());
-
-            //return actionExecutedContext.Object;
-
             var routeData = new RouteData();
             routeData.Values.Add("id", "123");
 
@@ -46,30 +33,6 @@ namespace CodeConverters.MvcTests.Diagnostics.Helpers
                 ctx.HttpContext.Request.Form == new NameValueCollection { { "Form1", "valueA" }, { "form2", "valueB" }, { "password", "123qwe" } } &&
                 ctx.RouteData == routeData &&
                 ctx.Controller == new DummyController());
-        }
-
-        private static Mock<ActionDescriptor> CreateActionDescriptorMock()
-        {
-            var actionDescriptor = new Mock<ActionDescriptor>();
-            actionDescriptor.Setup(a => a.ControllerDescriptor.ControllerName).Returns("mycontroller");
-            actionDescriptor.Setup(a => a.ActionName).Returns("myaction");
-            return actionDescriptor;
-        }
-
-        private static Mock<HttpContextBase> CreateHttpContextMock()
-        {
-            var httpContext = new Mock<HttpContextBase>();
-            httpContext.Setup(c => c.Request.RawUrl).Returns("http://mytesturl.com/mycontroller/myaction/123");
-            httpContext.Setup(c => c.Request.HttpMethod).Returns("GET");
-            httpContext.Setup(c => c.Request.Headers).Returns(new NameValueCollection
-            {
-                {"header1", "value1"},
-                {"header2", "value2"},
-                {"secret", "IAmBatman"}
-            });
-            httpContext.Setup(c => c.Request.Form)
-                .Returns(new NameValueCollection { { "Form1", "valueA" }, { "form2", "valueB" }, { "password", "123qwe" } });
-            return httpContext;
         }
     }
 }
