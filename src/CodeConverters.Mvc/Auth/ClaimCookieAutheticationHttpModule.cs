@@ -4,7 +4,8 @@ using System.Web;
 namespace CodeConverters.Mvc.Auth
 {
     /// <summary>
-    /// Inherit from mee or regiter the gernic type 
+    /// Register this module in your web config.
+    /// Inherit from me or register the generic type 
     /// For Registering a Managed-code Module (like this) see http://msdn.microsoft.com/en-us/library/bb763179(v=vs.100).aspx 
     /// See here for generic registetraion : http://stackoverflow.com/questions/4138794/how-can-i-register-generic-class-as-ihttpmodule
     /// </summary>
