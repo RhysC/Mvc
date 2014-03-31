@@ -4,6 +4,9 @@ using Xunit;
 
 namespace CodeConverters.MvcTests
 {
+    /// <summary>
+    /// An example Web config test fixture. These test do not test the implemented code but show how to test for production code using these libraries
+    /// </summary>
     public class WebConfigFixture
     {
         private readonly WebConfig _sut;
