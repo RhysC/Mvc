@@ -1,13 +1,12 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using CodeConverters.Core.Diagnostics;
 using log4net;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace CodeConverters.Mvc.Diagnostics
+namespace CodeConverters.Core.Diagnostics
 {
     public static class RoleLoggingConfiguration
     {
