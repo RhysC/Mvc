@@ -2,7 +2,7 @@
 using log4net.Appender;
 using log4net.Core;
 
-namespace CodeConverters.Mvc.Diagnostics
+namespace CodeConverters.Core.Diagnostics
 {
     public class NewRelicAgentErrorAppender : AppenderSkeleton
     {

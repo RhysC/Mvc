@@ -91,6 +91,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CodeConverters.Core\CodeConverters.Core.csproj">
+      <Project>{85E7434F-6160-442D-BA0D-98A272695624}</Project>
+      <Name>CodeConverters.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CodeConverters.Mvc\CodeConverters.Mvc.csproj">
       <Project>{02D2A5ED-6C3E-4474-8539-EC834FB2C8FE}</Project>
       <Name>CodeConverters.Mvc</Name>

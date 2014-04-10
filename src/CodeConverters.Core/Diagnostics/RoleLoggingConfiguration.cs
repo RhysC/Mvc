@@ -6,7 +6,7 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace CodeConverters.Mvc.Diagnostics
+namespace CodeConverters.Core.Diagnostics
 {
     public static class RoleLoggingConfiguration
     {
