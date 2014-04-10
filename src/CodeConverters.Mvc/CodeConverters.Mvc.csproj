@@ -109,16 +109,11 @@
     <Compile Include="Diagnostics\FormExtensions.cs" />
     <Compile Include="Diagnostics\HeartBeater.cs" />
     <Compile Include="Diagnostics\IHeartBeater.cs" />
-    <Compile Include="Diagnostics\Log4NetAppenderFactory.cs" />
-    <Compile Include="Diagnostics\Log4NetConfiguration.cs" />
     <Compile Include="Diagnostics\LogAttribute.cs" />
     <Compile Include="Diagnostics\MvcErrorLogEvent.cs" />
     <Compile Include="Diagnostics\MvcLogEvent.cs" />
-    <Compile Include="Diagnostics\NewRelicAgentErrorAppender.cs" />
     <Compile Include="Diagnostics\ErrorLoggingHttpModule.cs" />
     <Compile Include="Diagnostics\NewRelicCounterFormats.cs" />
-    <Compile Include="Diagnostics\RoleConfiguration.cs" />
-    <Compile Include="Diagnostics\RoleLoggingConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Auth\UserPermissionsExtensions.cs" />
   </ItemGroup>

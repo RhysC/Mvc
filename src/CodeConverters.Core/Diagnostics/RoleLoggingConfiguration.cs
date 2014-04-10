@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using CodeConverters.Core.Diagnostics;
 using log4net;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;

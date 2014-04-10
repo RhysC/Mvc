@@ -1,9 +1,10 @@
 ﻿using System.IO;
+using CodeConverters.Mvc.Diagnostics;
 using log4net.Appender;
 using log4net.Core;
 using log4net.Layout;
 
-namespace CodeConverters.Mvc.Diagnostics
+namespace CodeConverters.Core.Diagnostics
 {
     public static class Log4NetAppenderFactory
     {
