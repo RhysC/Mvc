@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CodeConverters.Worker")]
+[assembly: AssemblyTitle("CodeConverters.PersistentQueues")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("CodeConverters.Worker")]
+[assembly: AssemblyProduct("CodeConverters.PersistentQueues")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6d03f3d5-090e-4b0b-81db-54ca39a741cc")]
+[assembly: Guid("2b7b5fa2-bef8-40ee-bfcc-9b6ecaf2c481")]
 
 // Version information for an assembly consists of the following four values:
 //
